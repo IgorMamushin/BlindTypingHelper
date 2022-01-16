@@ -1,0 +1,249 @@
+﻿<Window x:Class="BlindTypingHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:BlindTypingHelper"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Blind typing helper"
+        Width="464"
+        Height="205"
+        ResizeMode="CanMinimize"
+        mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseLabelStyle" TargetType="Label">
+                <d:Style.DataContext>
+                    <x:Type Type="local:KeyData" />
+                </d:Style.DataContext>
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Width" Value="30" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Content" Value="{Binding Path=Letter, IsAsync=True, Mode=OneWay}" />
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="5"
+                                          Opacity="0.4"
+                                          ShadowDepth="5" />
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=IsPressed, Mode=OneWay}" Value="true">
+                        <Setter Property="BorderThickness" Value="3,3,2,2" />
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect BlurRadius="5"
+                                                  Opacity="0.8"
+                                                  ShadowDepth="3" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Opacity" Value="0.8" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=Unavailable, Mode=OneWay}" Value="true">
+                        <Setter Property="Opacity" Value="0.4" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="Empty"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="WhiteSmoke" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+
+            <Style x:Key="LeftLittleFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="DarkSeaGreen" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+            <Style x:Key="RightLittleFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="LightGreen" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+
+            <Style x:Key="LeftRingFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="Coral" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+            <Style x:Key="RightRingFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="LightCoral" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+
+            <Style x:Key="LeftMiddleFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="DarkOrange" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+            <Style x:Key="RightMiddleFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="Orange" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+
+            <Style x:Key="LeftForefinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="PaleVioletRed" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+            <Style x:Key="RightForefinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="DeepSkyBlue" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+
+            <Style x:Key="LeftThumbFinger"
+                   BasedOn="{StaticResource BaseLabelStyle}"
+                   TargetType="Label">
+                <Setter Property="Background" Value="LightGray" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Canvas x:Name="Form">
+        <StackPanel Canvas.Left="2"
+                    Canvas.Top="2"
+                    Orientation="Horizontal">
+            <Label Style="{StaticResource LeftLittleFinger}" Tag="192" />
+            <Label Style="{StaticResource LeftLittleFinger}" Tag="49" />
+            <Label Style="{StaticResource LeftRingFinger}" Tag="50" />
+            <Label Style="{StaticResource LeftMiddleFinger}" Tag="51" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="52" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="53" />
+            <Label Style="{StaticResource RightForefinger}" Tag="54" />
+            <Label Style="{StaticResource RightForefinger}" Tag="55" />
+            <Label Style="{StaticResource RightMiddleFinger}" Tag="56" />
+            <Label Style="{StaticResource RightRingFinger}" Tag="57" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="48" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="189" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="187" />
+            <Label Width="50"
+                   Content="Back"
+                   Style="{StaticResource RightLittleFinger}"
+                   Tag="8" />
+        </StackPanel>
+
+        <StackPanel Canvas.Left="2"
+                    Canvas.Top="34"
+                    Orientation="Horizontal">
+            <Label Width="40"
+                   Content="Tab"
+                   Style="{StaticResource LeftLittleFinger}"
+                   Tag="9" />
+            <Label Style="{StaticResource LeftLittleFinger}" Tag="81" />
+            <Label Style="{StaticResource LeftRingFinger}" Tag="87" />
+            <Label Style="{StaticResource LeftMiddleFinger}" Tag="69" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="82" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="84" />
+            <Label Style="{StaticResource RightForefinger}" Tag="89" />
+            <Label Style="{StaticResource RightForefinger}" Tag="85" />
+            <Label Style="{StaticResource RightMiddleFinger}" Tag="73" />
+            <Label Style="{StaticResource RightRingFinger}" Tag="79" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="80" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="219" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="221" />
+            <Label Width="40"
+                   Style="{StaticResource RightLittleFinger}"
+                   Tag="220" />
+        </StackPanel>
+
+        <StackPanel Canvas.Left="2"
+                    Canvas.Top="66"
+                    Orientation="Horizontal">
+            <Label Width="50"
+                   Content="Caps"
+                   Style="{StaticResource LeftLittleFinger}"
+                   Tag="20" />
+            <Label Style="{StaticResource LeftLittleFinger}" Tag="65" />
+            <Label Style="{StaticResource LeftRingFinger}" Tag="83" />
+            <Label Style="{StaticResource LeftMiddleFinger}" Tag="68" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="70" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="71" />
+            <Label Style="{StaticResource RightForefinger}" Tag="72" />
+            <Label Style="{StaticResource RightForefinger}" Tag="74" />
+            <Label Style="{StaticResource RightMiddleFinger}" Tag="75" />
+            <Label Style="{StaticResource RightRingFinger}" Tag="76" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="186" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="222" />
+            <Label Width="60"
+                   Content="Enter"
+                   Style="{StaticResource RightLittleFinger}"
+                   Tag="13" />
+        </StackPanel>
+
+        <StackPanel Canvas.Left="2"
+                    Canvas.Top="98"
+                    Orientation="Horizontal">
+            <Label Width="70"
+                   Content="Shift"
+                   Style="{StaticResource LeftLittleFinger}"
+                   Tag="160" />
+            <Label Style="{StaticResource LeftLittleFinger}" Tag="90" />
+            <Label Style="{StaticResource LeftRingFinger}" Tag="88" />
+            <Label Style="{StaticResource LeftMiddleFinger}" Tag="67" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="86" />
+            <Label Style="{StaticResource LeftForefinger}" Tag="66" />
+            <Label Style="{StaticResource RightForefinger}" Tag="78" />
+            <Label Style="{StaticResource RightForefinger}" Tag="77" />
+            <Label Style="{StaticResource RightMiddleFinger}" Tag="188" />
+            <Label Style="{StaticResource RightRingFinger}" Tag="190" />
+            <Label Style="{StaticResource RightLittleFinger}" Tag="191" />
+            <Label Width="70"
+                   Content="Shift"
+                   Style="{StaticResource RightLittleFinger}"
+                   Tag="161" />
+        </StackPanel>
+
+        <StackPanel Canvas.Left="2"
+                    Canvas.Top="130"
+                    Orientation="Horizontal">
+            <Label Width="35"
+                   Content="Ctrl"
+                   Style="{StaticResource LeftLittleFinger}"
+                   Tag="162" />
+            <Label Width="35"
+                   Content="Win"
+                   Style="{StaticResource LeftLittleFinger}"
+                   Tag="91" />
+
+            <Label Width="35"
+                   Content="Alt"
+                   Style="{StaticResource LeftThumbFinger}"
+                   Tag="164" />
+            <Label Width="195"
+                   Content="Space"
+                   Style="{StaticResource LeftThumbFinger}"
+                   Tag="32" />
+            <Label Width="35"
+                   Content="Alt"
+                   Style="{StaticResource LeftThumbFinger}"
+                   Tag="165" />
+
+            <Label Width="35"
+                   Content=""
+                   Style="{StaticResource Empty}" />
+            <Label Width="35"
+                   Content=""
+                   Style="{StaticResource Empty}" />
+            <Label Width="35"
+                   Content="Ctrl"
+                   Style="{StaticResource RightLittleFinger}"
+                   Tag="163" />
+        </StackPanel>
+    </Canvas>
+</Window>
