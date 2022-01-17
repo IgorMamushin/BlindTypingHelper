@@ -1,7 +1,7 @@
 name: "Realise"
 
 on:
-  puch:
+  push:
     tags:
       - "release/v*"
       
@@ -9,7 +9,7 @@ env:
   PROJECT_PATH: src/BlindTypingHelper/BlindTypingHelper.csproj
       
 jobs:
-  build:
+  deploy:
   
     runs-on: windows-latest
   
