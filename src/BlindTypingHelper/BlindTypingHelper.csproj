@@ -7,7 +7,11 @@
     <UseWPF>true</UseWPF>
     <StartupObject>BlindTypingHelper.App</StartupObject>
     <UseWindowsForms>True</UseWindowsForms>
+
+	<PublishSingleFile>true</PublishSingleFile>
+	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<DebugType>none</DebugType>
   </PropertyGroup>
 
 </Project>
